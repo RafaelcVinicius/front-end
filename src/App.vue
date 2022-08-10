@@ -1,32 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <login-component></login-component>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
- import api from "@/main";
+import LoginComponent from './components/LoginComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LoginComponent
   },
- created() {
-     this.getUser();
-   },
-   methods: {
-     getUser() {
-       api
-         .get("/")
-         .then((res) => {
-          console.log(res);
-         })
-         .catch((error) => {
-           console.log(error);
-         });
-     },
-   }
 }
 </script>
 
