@@ -6,26 +6,28 @@
           <span class="font-20">Rafael Coldebella</span>
       </div>
       <div class="m-2r m-1t flex-ja">
-          <ButtonComponent 
+          <ButtonLinkComponent 
           :value="'Entrar'"
           :size="2"
           :style="'bg-cinza color-black'"
+          :to="'login'"
           />
-          <ButtonComponent
+          <ButtonLinkComponent
           :value="'Registre-se'"
           :size="2"
           :style="'bg-roxo color-cinza'"
+          :to="'register'"
           class="m-1l"/>
-      </div>  
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ButtonComponent from "../components/Buttons/ButtonComponent.vue";
+import ButtonLinkComponent from "../components/Buttons/ButtonLinkComponent.vue";
 export default {
   components: {
-    ButtonComponent: ButtonComponent,
+    ButtonLinkComponent: ButtonLinkComponent,
   },
 }
 </script>
