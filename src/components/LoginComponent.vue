@@ -1,5 +1,9 @@
 <template>
-    <div>
+    <div class="flex-c gap-c1">
+        <input-component 
+            v-model:value="email"
+        >
+        </input-component>
         <label for="email">E-mail</label>
         <input type="email" v-model="email" id="email" name="email">
         <label for="password">Password</label>
@@ -13,14 +17,21 @@
 <script>
 import api from "@/main";
 import ShowUserComponent from "./ShowUserComponent.vue";
+import InputComponent from "./input/InputPadraoComponent.vue";
 
 export default {
     name: "LoginComponent",
+    components: { ShowUserComponent, InputComponent },
     data() {
         return {
             email: "",
             password: "",
         };
+    },
+    watch:{
+        email(){
+            console.log(this.email);
+        }
     },
     methods: {
         logar() {
@@ -39,7 +50,6 @@ export default {
             });
         }
     },
-    components: { ShowUserComponent }
 }
 </script>
 

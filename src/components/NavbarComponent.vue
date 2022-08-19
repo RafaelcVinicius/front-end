@@ -1,6 +1,6 @@
 <template>
-  <div id="navBar">
-    <div class="flex-jb">
+  <div id="navBar" class="flex-jc">
+    <div class="flex-jb mw-1366 w-100">
       <div class="m-2l m-1t">
           <!-- <img src="" alt=""> -->
           <span class="font-20">Rafael Coldebella</span>
@@ -26,9 +26,7 @@
 <script>
 import ButtonLinkComponent from "../components/Buttons/ButtonLinkComponent.vue";
 export default {
-  components: {
-    ButtonLinkComponent: ButtonLinkComponent,
-  },
+  components: { ButtonLinkComponent },
 }
 </script>
 
