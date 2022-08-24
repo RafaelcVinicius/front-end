@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <button :data-size="size" :class="style" type="button">{{value}}</button>
-  </div>
+      <router-link :to="to" :data-size="size" :class="style">{{name}}</router-link>
 </template>
 
 <script>
 export default {
   props:{
-    value:{
+    name:{
         type:String,
         required:true,
     },  
@@ -18,7 +16,11 @@ export default {
     style:{
         type:String,
         required:false,
-    }    
+    },   
+    to:{
+        type:String,
+        required:false,
+    },   
   }
 }
 </script>
@@ -40,7 +42,10 @@ export default {
   width: 250px;
   height: 45px;
 }
-button{
+a::first-letter{
+  text-transform: uppercase;
+}
+a{
   font-family: 'Poppins','Helvetica',sans-serif;
   letter-spacing: 1px;
   font-weight: 700;
@@ -49,5 +54,9 @@ button{
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

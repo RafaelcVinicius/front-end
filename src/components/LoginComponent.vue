@@ -1,27 +1,33 @@
 <template>
-    <div class="flex-c gap-c1">
-        <input-component 
+    <div class="flex-c gap-c1 w-100 container mw-400 gap-r1" >
+        <input-component
             v-model:value="email"
-        >
-        </input-component>
-        <label for="email">E-mail</label>
-        <input type="email" v-model="email" id="email" name="email">
-        <label for="password">Password</label>
-        <input type="password" v-model="password" name="password" id="password">
-        <button @click="logar">Logar</button>
-
-        <show-user-component></show-user-component>
+            :id="'email'"
+            :label="'e-mail'"
+            :placeholder="'email'"
+        ></input-component>
+        <input-component
+            v-model:value="password"
+            :id="'password'"
+            :label="'password'"
+            :placeholder="'password'"
+        ></input-component>
+        <ButtonComponent
+            :name="'enviar'"
+            :size="2"
+            :style="'bg-roxo color-cinza'"
+        ></ButtonComponent>
     </div>
 </template>
 
 <script>
 import api from "@/main";
-import ShowUserComponent from "./ShowUserComponent.vue";
 import InputComponent from "./input/InputPadraoComponent.vue";
+import ButtonComponent from "./buttons/ButtonComponent.vue";
 
 export default {
     name: "LoginComponent",
-    components: { ShowUserComponent, InputComponent },
+    components: { InputComponent, ButtonComponent },
     data() {
         return {
             email: "",

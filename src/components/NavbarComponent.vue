@@ -7,13 +7,13 @@
       </div>
       <div class="m-2r m-1t flex-ja">
           <ButtonLinkComponent 
-          :value="'Entrar'"
+          :name="'entrar'"
           :size="2"
           :style="'bg-cinza color-black'"
           :to="'login'"
           />
           <ButtonLinkComponent
-          :value="'Registre-se'"
+          :name="'registre-se'"
           :size="2"
           :style="'bg-roxo color-cinza'"
           :to="'register'"
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ButtonLinkComponent from "../components/Buttons/ButtonLinkComponent.vue";
+import ButtonLinkComponent from "../components/buttons/ButtonLinkComponent.vue";
 export default {
   components: { ButtonLinkComponent },
 }

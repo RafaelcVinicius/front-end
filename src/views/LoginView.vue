@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-jc flex-ac h-100">
+  <div class="container">
     <LoginComponent></LoginComponent>
   </div>
 </template>
@@ -14,6 +14,6 @@ name:'loginView',
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
