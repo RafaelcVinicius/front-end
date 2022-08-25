@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 [data-size="1"]{
   width: 60px;
   height: 50px;

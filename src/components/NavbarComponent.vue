@@ -38,5 +38,6 @@ export default {
   width: 100%;
   height: 75px;
   box-shadow: 5px 5px 10px #ccc;
+  background-color: #fff;
 }
 </style>
