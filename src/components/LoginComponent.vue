@@ -20,25 +20,24 @@
             :error="error.password"
             @keyup.enter="logar"
         ></input-component>
-        <button-link-component
+        <button-component
             :name="'enviar'"
             :size="2"
             :style="'bg-roxo color-cinza'"
             @click="logar"
             @keyup.enter="logar"
-            :to="'ggg'"
-        ></button-link-component>
+        ></button-component>
     </div>
 </template>
 
 <script>
 import api from "@/main";
 import InputComponent from "./input/InputPadraoComponent.vue";
-import ButtonLinkComponent from "./buttons/ButtonLinkComponent.vue";
+import ButtonComponent from "./buttons/ButtonComponent.vue";
 
 export default {
     name: "LoginComponent",
-    components: { InputComponent, ButtonLinkComponent },
+    components: { InputComponent, ButtonComponent },
     data() {
         return {
             dados:{
@@ -75,7 +74,6 @@ export default {
                 this.dados
             ).then((res) => {
                 localStorage.token = res.data;
-                console.log(res);
             }).catch((error) => {
                 console.log(error);
             });
