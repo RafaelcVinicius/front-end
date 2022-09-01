@@ -20,13 +20,16 @@
             :error="error.password"
             @keyup.enter="logar"
         ></input-component>
-        <button-component
-            :name="'enviar'"
-            :size="2"
-            :style="'bg-roxo color-cinza'"
-            @click="logar"
-            @keyup.enter="logar"
-        ></button-component>
+        <div class="flex-jc w-100 relative">
+            <router-link class="font-12 register textFirstUp color-black" to="register">registrar-se</router-link>
+            <button-component
+                :name="'enviar'"
+                :size="2"
+                :style="'bg-purple color-cinza'"
+                @click="logar"
+                @keyup.enter="logar"
+            ></button-component>
+        </div>
     </div>
 </template>
 
@@ -35,9 +38,19 @@ import api from "@/main";
 import InputComponent from "./input/InputPadraoComponent.vue";
 import ButtonComponent from "./buttons/ButtonComponent.vue";
 
+import { mapState } from "pinia";
+import { mapActions } from "pinia";
+import { storeLoadingPage } from "@/store/storeLoadingPage.js";
+
 export default {
     name: "LoginComponent",
     components: { InputComponent, ButtonComponent },
+    setup(){
+        const loadingPage = storeLoadingPage();
+        return {
+            loadingPage
+        }
+    },
     data() {
         return {
             dados:{
@@ -62,10 +75,15 @@ export default {
             }
         }
     },
+    computed:{
+        ...mapState(storeLoadingPage, ['message']),
+    },
     methods: {
+        ...mapActions(storeLoadingPage, ['addActive']),
         logar()
         {
-            if(this.validarLogin())
+            this.addActive()
+            if(this.validarLogin());
                 this.postApi();
         },
         postApi()
@@ -98,6 +116,11 @@ export default {
 <style scoped>
 #loginComponent{
     box-shadow: 5px 5px 10px #ccc;
+}
+.register{
+    position: absolute;
+    top: -22px;
+    right: 20px;
 }
 
 </style>

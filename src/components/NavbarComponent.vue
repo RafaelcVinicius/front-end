@@ -15,7 +15,7 @@
           <ButtonLinkComponent
           :name="'registre-se'"
           :size="2"
-          :style="'bg-roxo color-cinza'"
+          :style="'bg-purple color-cinza'"
           :to="'register'"
           class="m-1l"/>
       </div>

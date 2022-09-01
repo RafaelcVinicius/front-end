@@ -72,3 +72,14 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+
+.textFirstUp:first-letter{
+    text-transform: uppercase;
+}

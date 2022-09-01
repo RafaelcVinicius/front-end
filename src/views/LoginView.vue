@@ -1,6 +1,7 @@
 <template>
   <div class="container m-5t">
-    <LoginComponent></LoginComponent>
+    <LoginComponent
+    ></LoginComponent>
   </div>
 </template>
 
@@ -10,7 +11,7 @@ export default {
 name:'loginView',
   components:{
     LoginComponent: LoginComponent,
-  }
+  },
 }
 </script>
 
