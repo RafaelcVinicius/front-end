@@ -6,7 +6,7 @@
         <i></i>
         <i></i>
     </div>
-    <div v-show="status">
+    <div v-show="message">
         <span>{{message}}</span>
     </div>
   </div>

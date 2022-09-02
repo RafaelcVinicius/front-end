@@ -28,7 +28,7 @@
                 :style="'bg-purple color-cinza'"
                 @click="logar"
                 @keyup.enter="logar"
-            ></button-component>
+          ></button-component>
         </div>
     </div>
 </template>
@@ -38,19 +38,12 @@ import api from "@/main";
 import InputComponent from "./input/InputPadraoComponent.vue";
 import ButtonComponent from "./buttons/ButtonComponent.vue";
 
-import { mapState } from "pinia";
 import { mapActions } from "pinia";
 import { storeLoadingPage } from "@/store/storeLoadingPage.js";
 
 export default {
     name: "LoginComponent",
     components: { InputComponent, ButtonComponent },
-    setup(){
-        const loadingPage = storeLoadingPage();
-        return {
-            loadingPage
-        }
-    },
     data() {
         return {
             dados:{
@@ -75,23 +68,26 @@ export default {
             }
         }
     },
-    computed:{
-        ...mapState(storeLoadingPage, ['message']),
-    },
     methods: {
         ...mapActions(storeLoadingPage, ['addActive']),
+
+        ...mapActions(storeLoadingPage, ['addMessage']),
+
         logar()
         {
-            this.addActive()
             if(this.validarLogin());
                 this.postApi();
         },
         postApi()
         {
+            this.addActive();
             api.post("/login/logar",
                 this.dados
             ).then((res) => {
                 localStorage.token = res.data;
+                setTimeout(()=>{
+                    this.addMessage('success');
+                }, 3000)
             }).catch((error) => {
                 console.log(error);
             });

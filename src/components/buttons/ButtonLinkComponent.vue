@@ -1,5 +1,5 @@
 <template>
-      <router-link :to="to" :data-size="size" :class="style">{{name}}</router-link>
+  <router-link :to="to" :data-size="size" :class="style">{{name}}</router-link>
 </template>
 
 <script>
