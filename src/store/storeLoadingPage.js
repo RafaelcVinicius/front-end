@@ -4,11 +4,27 @@ export const storeLoadingPage = defineStore("storeLoadingPage", {
     id: 'storeLoadingPage',
     state: () => ({
         active: false,
-        message: '',
+        request: {
+            status: '',
+            message: '',
+            link: ''
+        },
     }),
     actions: {
-        addMessage(msg) {
-            this.message = msg;
+        addRequest(status, msg, link = '') {
+            this.request = {
+                status: status,
+                message: msg,
+                link: link
+            };
+            setTimeout(() => {
+                this.request = {
+                    status: '',
+                    message: '',
+                    link: ''
+                };
+                this.active = false;
+            }, 3000);
         },
         addActive() {
             this.active = !this.active;

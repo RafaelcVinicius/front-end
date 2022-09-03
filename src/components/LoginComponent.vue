@@ -71,25 +71,23 @@ export default {
     methods: {
         ...mapActions(storeLoadingPage, ['addActive']),
 
-        ...mapActions(storeLoadingPage, ['addMessage']),
+        ...mapActions(storeLoadingPage, ['addRequest']),
 
         logar()
         {
-            if(this.validarLogin());
+            if(this.validarLogin())
                 this.postApi();
         },
         postApi()
         {
             this.addActive();
-            api.post("/login/logar",
+            api.post("/login",
                 this.dados
             ).then((res) => {
-                localStorage.token = res.data;
-                setTimeout(()=>{
-                    this.addMessage('success');
-                }, 3000)
+                localStorage.token = res.data.token;
+                this.addRequest('success',res.data.message, 'http://rafaelcoldebella.com.br:8080/entrou');
             }).catch((error) => {
-                console.log(error);
+                this.addRequest('error', error.response.data.message);
             });
         },
         validarLogin()
@@ -100,11 +98,10 @@ export default {
             if(!this.dados.password.length > 0){
                 this.error.password = '* Campo obrigatório.'
             }
-
             if(this.error.password.length > 0 || this.error.email.length > 0)
-                return false
-            return true
-        }       
+                return false;
+            return true;
+        }
     },
 }
 </script>

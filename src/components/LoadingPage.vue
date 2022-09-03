@@ -6,32 +6,39 @@
         <i></i>
         <i></i>
     </div>
-    <div v-show="message">
-        <span>{{message}}</span>
+    <div class="message" v-show="request.message.length > 0">
+        <span class="font-14">{{request.message}}</span>
     </div>
   </div>
 </template>
 
 <script>
-    import { mapState } from "pinia";
+    import { mapActions, mapState } from "pinia";
     import { storeLoadingPage } from "@/store/storeLoadingPage.js";
 export default {
-
-    data()
-    {
-        return{
-            loading:true,
-            status:false,
-        }
-    },
     computed:{
         ...mapState(storeLoadingPage, ['active']),
-        ...mapState(storeLoadingPage, ['message']),
+        ...mapState(storeLoadingPage, ['request']),
+        
+        loading()
+        {
+            if(this.request.message.length > 0){
+                if(this.request.link.length > 0){
+                    this.redirect(this.request.link);
+                }
+                return false;
+            }
+            return true;
+        }
     },
     methods:{
-        messageStatus(){
-
+        ...mapActions(storeLoadingPage, ['addActive']),
+        redirect(link){
+            setTimeout(()=>{
+                window.location.href = link;
+            }, 3000);
         }
+
     },
 }
 </script>
@@ -125,4 +132,16 @@ export default {
     height: 10px;
     border-radius:25px ;
 }
+.message{
+    max-width: 350px;
+    min-width: 250px;
+    max-height: 60px;
+    height: 100%;
+    background-color: #fff;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 5px;
+    transition: transform 2s;
+}
+
 </style>
