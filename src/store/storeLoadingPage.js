@@ -17,6 +17,7 @@ export const storeLoadingPage = defineStore("storeLoadingPage", {
                 message: msg,
                 link: link
             };
+            console.log('ff');
             setTimeout(() => {
                 this.request = {
                     status: '',
