@@ -5,7 +5,6 @@
           <!-- <img src="" alt=""> -->
           <span class="font-20">Rafael Coldebella</span>
       </div>
-      {{user.id}}
       <div v-if="user.id" class="m-2r m-1t flex-ja">
         <ButtonLinkComponent 
           :name="'Sair'"

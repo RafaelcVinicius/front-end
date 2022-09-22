@@ -1,18 +1,18 @@
 <template>
-  <div class="flex-c w-100 flex-ac">
+  <div class="flex-c w-100 flex-ac relative">
     <label
       class="w-100"
       :data-size="1"
       :for="id"
       >{{ label }}</label>
     <input
-      :type="type"
+      :type="typeAtivo ? type : 'text'"
       :value="value"
       :placeholder="placeholder"
       :id="id"
       @input="$emit('update:value', $event.target.value)"
       :data-size="size"
-    >
+    > <i v-if="type == 'password'" @click="showPassword"></i>
     <div class="erro">
         <small>{{error}}</small>
     </div>
@@ -22,6 +22,12 @@
 <script>
 export default {
   name:'InputPadraoComponent',
+
+  data(){
+    return {
+      typeAtivo:true,
+    }
+  },
 
   emits: ['update:value'],
 
@@ -54,7 +60,15 @@ export default {
       type:String,
       required:false,
     },
+  },
+
+  methods:{
+    showPassword()
+    {
+      this.typeAtivo = !this.typeAtivo;
+    }
   }
+
 }
 </script>
 
@@ -105,5 +119,14 @@ input{
 [data-size="3"]{
   max-width: 350px;
   width: 100%;
+}
+i{
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background-color: black;
 }
 </style>

@@ -87,7 +87,7 @@ export default {
               this.dados
           ).then((res) => {
               localStorage.token = res.data.token;
-              this.addRequest('success',res.data.message, 'http://rafaelcoldebella.com.br:8080/entrou');
+              this.addRequest('success',res.data.message, window.location.href.split('/')[0] + '//' + window.location.host + '/');
           }).catch((error) => {
               this.addRequest('error', error.response.data.message);
           });

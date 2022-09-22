@@ -14,14 +14,15 @@ export const storeMain = defineStore("storeMain", {
                   }
                 }).then((res) => {
                   this.user = res.data
-            }).catch((error) => {
-                console.log(error);
+            }).catch(() => {
+                localStorage.token = '';
             });
         },
 
         deslogar(){
           localStorage.token = '';
           this.user = {};
+          window.location.href = '/';
         }
     }
 })

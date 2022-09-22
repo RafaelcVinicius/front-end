@@ -22,6 +22,8 @@ export default {
   created(){
     if(localStorage.token.length){
       this.requestUser();
+    }else if(window.location.pathname == '/'){
+      window.location.href = '/bemvindo'
     }
   },
 

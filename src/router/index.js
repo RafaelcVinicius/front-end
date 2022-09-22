@@ -19,11 +19,16 @@ const routes = [
         name: 'registerView',
         component: () => import('../views/auth/RegisterView.vue')
     },
+    {
+        path: '/bemvindo',
+        name: 'bemVindoView',
+        component: () => import('../views/BemVindoView.vue')
+    },
 ]
 
 const router = createRouter({
     history: createWebHistory(),
     routes
-  })
+})
   
   export default router

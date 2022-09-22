@@ -15,7 +15,6 @@ export default {
     },
     methods:{
         showUser(){
-            console.log(localStorage.token);
             api.get('/user', {
                   headers: {
                     Authorization: 'Bearer ' + localStorage.token,
