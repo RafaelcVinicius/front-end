@@ -5,7 +5,7 @@ import axios from "axios";
 import {createPinia} from "pinia";
 
 const api = axios.create({
- baseURL: "http://rafaelcoldebella.com.br:91/api/",
+    baseURL: "http://rafaelcoldebella.com.br:91/api/",
 });
 
 export default api
