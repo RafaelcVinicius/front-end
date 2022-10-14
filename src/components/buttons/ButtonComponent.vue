@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex-jc flex-ac">
     <button :data-size="size" :class="style" type="button">{{name}}</button>
   </div>
 </template>

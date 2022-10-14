@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="display">
+        <GraphicsComponent></GraphicsComponent>
     </div>
-    <div class="parameters">
+    <div class="parameters gap-r1">
         <input-component
             v-model:value="dados.valorInicial"
             :label="'Valor inicial'"
@@ -43,9 +44,10 @@
 import api from "@/main";
 import InputComponent from "./input/InputPadraoComponent.vue";
 import ButtonComponent from "./buttons/ButtonComponent.vue";
+import GraphicsComponent from "./graphics/GraphicsComponent.vue";
 
 export default {
-    components: { InputComponent, ButtonComponent },
+    components: { InputComponent, ButtonComponent, GraphicsComponent },
     name:'ShowAnalytics',
     data(){
         return {
