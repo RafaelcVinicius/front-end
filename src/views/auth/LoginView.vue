@@ -1,5 +1,5 @@
 <template>
-    <div class="container m-5t">
+    <div class="container m-5t w-100">
         <div id="loginComponent" class="flex-c w-100 h-400px container mw-300 gap-r1-5 br-8" >
             <input-component
                 v-model:value="dados.email"

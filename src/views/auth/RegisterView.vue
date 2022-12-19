@@ -1,5 +1,5 @@
 <template>
-  <div class="container m-5t">
+  <div class="container w-100 m-5t">
     <div class="flex-c w-100 h-400px container mw-300 gap-r1-5 br-8" >
         <input-component
             v-model:value="dados.name"
@@ -70,42 +70,42 @@ components: { InputComponent, ButtonComponent },
           },
           type:'text'
       };
-  },
-  methods: {
-    ...mapActions(storeLoadingPage, ['addActive']),
-
-    ...mapActions(storeLoadingPage, ['addRequest']),
-
-    register()
-    {
-        if(this.validarRegister())
-            this.postApi();
     },
-    postApi()
-    {
-        this.addActive();
-        api.post("/register",
-            this.dados
-        ).then((res) => {
-            localStorage.token = res.data.token;
-            this.addRequest('success',res.data.message, 'http://rafaelcoldebella.com.br:8080/entrou');
-        }).catch((error) => {
-            this.addRequest('error', error.response.data.message);
-        });
-    },
-    validarRegister()
-    {
-        if(!this.dados.email.length > 0){
-            this.error.email = '* Campo obrigatório.'
+    methods: {
+        ...mapActions(storeLoadingPage, ['addActive']),
+
+        ...mapActions(storeLoadingPage, ['addRequest']),
+
+        register()
+        {
+            if(this.validarRegister())
+                this.postApi();
+        },
+        postApi()
+        {
+            this.addActive();
+            api.post("/register",
+                this.dados
+            ).then((res) => {
+                localStorage.token = res.data.token;
+                this.addRequest('success',res.data.message, 'http://rafaelcoldebella.com.br:8080/entrou');
+            }).catch((error) => {
+                this.addRequest('error', error.response.data.message);
+            });
+        },
+        validarRegister()
+        {
+            if(!this.dados.email.length > 0){
+                this.error.email = '* Campo obrigatório.'
+            }
+            if(!this.dados.password.length > 0){
+                this.error.password = '* Campo obrigatório.'
+            }
+            if(this.error.password.length > 0 || this.error.email.length > 0)
+                return false;
+            return true;
         }
-        if(!this.dados.password.length > 0){
-            this.error.password = '* Campo obrigatório.'
-        }
-        if(this.error.password.length > 0 || this.error.email.length > 0)
-            return false;
-        return true;
     }
-  }
 }
 </script>
 

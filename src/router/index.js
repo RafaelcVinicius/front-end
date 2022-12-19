@@ -20,9 +20,14 @@ const routes = [
         component: () => import('../views/auth/RegisterView.vue')
     },
     {
-        path: '/bemvindo',
-        name: 'bemVindoView',
-        component: () => import('../views/BemVindoView.vue')
+        path: '/dashboard',
+        name: 'dashboardView',
+        component: () => import('../views/DashboardView.vue')
+    },
+    {
+        path: '/registration',
+        name: 'registrationActiveView',
+        component: () => import('../views/applications/RegistrationApplicationsView.vue')
     },
 ]
 

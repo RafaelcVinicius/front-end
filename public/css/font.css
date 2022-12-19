@@ -34,3 +34,8 @@
 .font-40{font-size: 40px;}
 .font-50{font-size: 50px;}
 .font-60{font-size: 60px;}
+
+
+.font-60{font-weight: bold;}
+.font-w600{font-weight: 600;}
+.font-w700{font-weight: 700;}

@@ -14,19 +14,28 @@
             @keyup.enter="showAnalytics"
         ></input-component>
         <input-component
-            v-model:value="dados.dataInicial"
-            :label="'Data inicial'"
+            v-model:value="dados.code"
+            :label="'Code'"
+            :placeholder="'Code'"
             :size="1"
-            :type="'date'"
-            :error="error.dataInicial"
+            :type="'text'"
+            :error="error.code"
             @keyup.enter="showAnalytics"
         ></input-component>
         <input-component
-            v-model:value="dados.dataFinal"
+            v-model:value="dados.dateStatr"
+            :label="'Data inicial'"
+            :size="1"
+            :type="'date'"
+            :error="error.dateStatr"
+            @keyup.enter="showAnalytics"
+        ></input-component>
+        <input-component
+            v-model:value="dados.dateEnd"
             :label="'Data final'"
             :size="1"
             :type="'date'"
-            :error="error.dataFinal"
+            :error="error.dateEnd"
             @keyup.enter="showAnalytics"
         ></input-component>
         <button-component
@@ -52,14 +61,16 @@ export default {
     data(){
         return {
             dados:{
+                code:'',
                 valorInicial: '0',
-                dataInicial: '',
-                dataFinal: ''
+                dateStatr: '',
+                dateEnd: ''
             },
             error:{
+                code:'',
                 valorInicial: '',
-                dataInicial: '',
-                dataFinal: ''
+                dateStatr: '',
+                dateEnd: ''
             }
         }
     },
@@ -67,11 +78,14 @@ export default {
     methods:{
         showAnalytics()
         {
-            let obj = this.dados;
-            api.get("/consulta/dados", {
-                  params:{
-                    obj
+            let params = {
+                    code:         this.dados.code,
+                    valorInicial: '0',
+                    dateStatr:    this.dados.dateStatr,
+                    dateEnd:      this.dados.dateEnd,
                   }
+            api.get("/bcb", {
+                params
                 }).then((res) => {
                 console.log(res);
             }).catch((error) => {

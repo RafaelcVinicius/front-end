@@ -1,30 +1,33 @@
 <template>
-  <div id="navBar" class="flex-jc">
-    <div class="flex-jb mw-1366 w-100">
-      <div class="m-2l m-1t">
+  <div id="navBar" class="flex-jc flex-ac">
+    <div v-if="userLogado.id" id="burger" @click="activeNavActions">
+      <i></i>
+    </div>
+    <div class="flex-jb w-100">
+      <div class="m-2l flex-ac">
           <!-- <img src="" alt=""> -->
           <span class="font-20">Rafael Coldebella</span>
       </div>
-      <div v-if="user.id" class="m-2r m-1t flex-ja">
+      <div v-if="userLogado.id" class="m-2r flex-ja">
         <ButtonLinkComponent 
           :name="'Sair'"
           :size="2"
-          :style="'bg-cinza color-black'"
+          :style="'bg-cinza flex-jc color-black font-w700'"
           :to="'/'"
           @click="deslogar"
           />
       </div>
-      <div v-else class="m-2r m-1t flex-ja">
+      <div v-else class="m-2r flex-ja">
           <ButtonLinkComponent 
           :name="'entrar'"
           :size="2"
-          :style="'bg-cinza color-black'"
+          :style="'bg-cinza flex-jc  color-black font-w700'"
           :to="'login'"
           />
           <ButtonLinkComponent
           :name="'registre-se'"
           :size="2"
-          :style="'bg-purple color-cinza'"
+          :style="'bg-purple flex-jc color-cinza font-w700'"
           :to="'register'"
           class="m-1l"/>
       </div>
@@ -42,15 +45,17 @@ export default {
 
   data(){
     return {
+        active: false,
     }
   },
 
   computed:{
-    ...mapState(storeMain, ['user']),
+    ...mapState(storeMain, ['userLogado']),
   },
 
   methods:{
     ...mapActions(storeMain, ['deslogar']),
+    ...mapActions(storeMain, ['activeNavActions']),
   }
 }
 </script>
@@ -62,7 +67,39 @@ export default {
   z-index: 5;
   width: 100%;
   height: 75px;
-  box-shadow: 5px 5px 10px #ccc;
+  box-shadow: 0px 1px 3px #ccc;
   background-color: #fff;
+}
+
+#burger{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 40px;
+  border-radius: 3px;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+#burger:hover{
+  background-color: #f4f4f6;
+}
+#burger i{
+  position: absolute;
+  border-top: 2px solid;
+  width: 18px;
+  color: #585757;
+} 
+#burger i::after,
+#burger i::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  margin-top: 5px;
+  transition: 0.3s;
+  position: relative;
 }
 </style>

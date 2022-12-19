@@ -48,7 +48,6 @@ a::first-letter{
 a{
   font-family: 'Poppins','Helvetica',sans-serif;
   letter-spacing: 1px;
-  font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.8px;
   border: none;
@@ -56,7 +55,6 @@ a{
   cursor: pointer;
   text-decoration: none;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 </style>

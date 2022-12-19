@@ -1,22 +1,28 @@
 <template>
   <div class="w-100 flex-c font-40">
-    <div class="w-100 flex-jc flex-c h-300px flex-ac font-40">
-      <h3>Bem-vindo</h3>
+    <div class="w-100 flex-jc flex-c h-300px flex-ac font-30 bg-purple">
+      <h3>Bem-vindo(a) {{ userLogado.id ? userLogado.name : '' }}</h3>
     </div>
-    <div class="w-100 flex-jc flex-c h-300px flex-ac font-40">
-        <ShowAnalytics></ShowAnalytics>
+    <div class="w-100 flex-jc flex-c flex-ac font-40">
+      <ExampleComponent></ExampleComponent>
     </div>
   </div>
-
 </template>
 
 <script>
-import ShowAnalytics from "../components/ShowAnalytics.vue";
+import { mapState } from "pinia";
+import { storeMain } from "@/store/storeMain.js";
+
+import ExampleComponent from "../components/ExampleComponent.vue";
 export default {
 name:'homeView',
-components: {
-      ShowAnalytics
-    },
+  components: {
+    ExampleComponent
+  },
+
+  computed:{
+    ...mapState(storeMain, ['userLogado']),
+  },
 }
 </script>
 
